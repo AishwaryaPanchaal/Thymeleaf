@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thymeleaf</title>
+    <link rel="stylesheet" href="/css/Index.css">
+</head>
+
+<body>
+    
+    <center>   
+    <div >
+        <a href="/otp"><button>OTP</button></a>
+
+        <div th:if="${otp}">
+            <h1 style="color:yellowgreen" th:text="'The OTP is : '+${otp}"></h1>
+        </div>
+
+        <div>
+            <br>
+            <form action="/circle" method="post">
+                <input type="text" name="color" th:value="${color}" placeholder="Enter One Color Name">
+                <input type="number" name="height" th:value="${height}" placeholder="Enter Height">
+                <input type="number" name="width" th:value="${width}" placeholder="Enter Width">
+                <button>Print</button>
+            </form>
+            <br>
+        </div>
+
+         
+        <div th:if="${color}" 
+        th:style="'height: '+${height}+'px;width: '+${width}+'px;background-color: '+${color}+';background: 2px solid black;border-radius: 50%;'" >
+        </div>
+
+        <script th:inline="javascript"> //to use thymeleaf under javascript
+            alert([[${color}]])
+        </script> 
+
+    </div>
+</center>
+</body>
+</html>
+
+
